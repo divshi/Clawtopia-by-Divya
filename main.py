@@ -22,10 +22,10 @@ claw_img = pygame.transform.scale(claw_img, (35, 60))
 
 toy_images = [
     (pygame.transform.scale(pygame.image.load('assets/toy1.png'), (60, 60)), 10),
-    (pygame.transform.scale(pygame.image.load('assets/toy2.png'), (60, 60)), 20),
-    (pygame.transform.scale(pygame.image.load('assets/toy3.png'), (60, 60)), 30),
-    (pygame.transform.scale(pygame.image.load('assets/toy4.png'), (60, 60)), 40),
-    (pygame.transform.scale(pygame.image.load('assets/toy5.png'), (60, 60)), 50)
+    (pygame.transform.scale(pygame.image.load('assets/toy2.png'), (80, 80)), 20),
+    (pygame.transform.scale(pygame.image.load('assets/toy3.png'), (100, 100)), 30),
+    (pygame.transform.scale(pygame.image.load('assets/toy4.png'), (120, 120)), 40),
+    (pygame.transform.scale(pygame.image.load('assets/toy5.png'), (140, 140)), 50)
 ]
 
 # Claw variables
