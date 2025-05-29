@@ -41,19 +41,23 @@ num_toys = 100
 
 def spawn_toys():
     toys_list = []
+    max_attempts = 1000 
     for _ in range(num_toys):
-        img, points = random.choice(toy_images)
-        x = random.randint(0, WIDTH - 60)
-        y = random.randint(HEIGHT // 2, HEIGHT - 60)
-        toy_rect = pygame.Rect(x, y, 60, 60)
-        toys_list.append({'rect': toy_rect, 'img': img, 'points': points})
+        attempts = 0
+        while attempts < max_attempts:
+            img, points = random.choice(toy_images)
+            toy_width, toy_height = img.get_size()
+            x = random.randint(0, WIDTH - toy_width)
+            y = random.randint(HEIGHT // 2, HEIGHT - toy_height)
+            new_rect = pygame.Rect(x, y, toy_width, toy_height)
+            
+            # Check if it overlaps with any existing toy
+            overlap = any(new_rect.colliderect(toy['rect']) for toy in toys_list)
+            if not overlap:
+                toys_list.append({'rect': new_rect, 'img': img, 'points': points})
+                break
+            attempts += 1
     return toys_list
-
-toys = spawn_toys()
-toy_caught = False
-caught_toy = None
-ready_to_drop = False
-toy_collected_text_time = 0
 
 # Score and font
 score = 0
